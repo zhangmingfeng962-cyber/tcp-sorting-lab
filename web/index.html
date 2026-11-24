@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f0f6">
+  <title>网络排序实验</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="course">Python 程序设计</p>
+        <h1>网络排序实验</h1>
+      </div>
+      <div class="header-actions">
+        <div class="status" id="status" data-status="waiting" role="status">正在读取服务端状态</div>
+        <button type="button" id="play" disabled>播放排序动画</button>
+      </div>
+    </header>
+    <p class="demo-message" id="demo-message" role="status" hidden></p>
+
+    <dl class="connection" aria-label="TCP 连接">
+      <div>
+        <dt>TCP 服务端</dt>
+        <dd id="server-address">—</dd>
+      </div>
+      <div class="wire" aria-hidden="true"><span>TCP</span></div>
+      <div>
+        <dt>TCP 客户端</dt>
+        <dd id="client-address">等待连接</dd>
+      </div>
+    </dl>
+
+    <section class="experiment" aria-labelledby="chart-title">
+      <div class="chart-header">
+        <div>
+          <h2 id="chart-title">原始列表</h2>
+          <p class="sequence" id="sequence"></p>
+        </div>
+        <div class="operation" id="operation" data-operation="idle">等待客户端开始排序</div>
+      </div>
+      <div class="chart-scroll">
+        <div class="chart" id="chart" role="img" aria-label="当前列表"></div>
+      </div>
+      <div class="chart-footer">
+        <span id="step-count">0 步</span>
+        <span class="legend">
+          <span class="legend-compare">正在比较</span>
+          <span class="legend-swap">完成交换</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="comparison" aria-labelledby="comparison-title">
+      <div class="comparison-header">
+        <h2 id="comparison-title">算法对比</h2>
+        <p>端到端耗时包含启用时的逐步演示延时</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">算法</th>
+              <th scope="col">比较</th>
+              <th scope="col">交换</th>
+              <th scope="col">总步数</th>
+              <th scope="col">耗时（ms）</th>
+              <th scope="col">结果</th>
+            </tr>
+          </thead>
+          <tbody id="results"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
